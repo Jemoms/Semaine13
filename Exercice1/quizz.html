@@ -10,12 +10,12 @@
 
     <h1>{{"Bienvenue au MoQuizz"}}</h1><br>
     <form ng-submit="calculer()">
-      <div ng-repeat= "q in questions">
+      <div ng-repeat= "q in questions" ng-model="questionnaire">
         <h2>{{q.question}}</h2>
-        <input type="radio" ng-model="answer" ng-click="questionnaire()" value="reponse1">{{q.reponses[0].reponse1}}<br>
-        <input type="radio" ng-model="answer" ng-click="questionnaire()" value="reponse2">{{q.reponses[1].reponse2}}<br>
-        <input type="radio" ng-model="answer" ng-click="questionnaire()" value="reponse3">{{q.reponses[2].reponse3}}<br>
-				{{answer}}
+        <input type="radio" ng-model="answer" value="reponse1">{{q.reponses[0].reponse1}}<br>
+        <input type="radio" ng-model="answer" value="reponse2">{{q.reponses[1].reponse2}}<br>
+        <input type="radio" ng-model="answer" value="reponse3">{{q.reponses[2].reponse3}}<br>
+				{{answer}} {{questions.index}}
       </div>
       <br><button class="btn btn-primary btn-lg" type="submit">Calculer</button><br>
     </form>
