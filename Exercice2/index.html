@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    
+        <head>
+    	 <meta charset="utf-8">
+    		<title>Quiz de Personnalité</title>
+    		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    		<script src="app.js"></script>
+    		
+    	</head>
+    
+        <body ng-controller="appCtrl">
+            <input ng-model="valeur" type="number" placeholder="valeur" />
+            <button ng-click="addDepense()" class= "btn btn-primary">Ajouter dépense</button>
+            <ul>
+                <li ng-repeat="depense in depenses">
+                    {{ depense.valeur }} <span ng-click="rmDepense($index)">×</span>
+                </li>
+            </ul>
+            <strong>Total des dépenses : {{ total }}</strong>
+        </body>
+
+
+</html>
