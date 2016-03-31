@@ -1,6 +1,39 @@
 var app = angular.module('MonApp',[]);
 
 app.controller('QuizzCtrl', function ($scope) {
+	
+	$scope.yolo = true;
+	$scope.display = false;
+    
+    $scope.calculate = function () {
+    	$scope.yolo = false;
+        $scope.totalScore = 0;
+        $scope.result;
+        angular.forEach($scope.asks, function(ask) {
+            $scope.display = true;
+            $scope.totalScore += parseInt(ask.score);
+        });
+        if ($scope.totalScore > 15) {
+            $scope.result = $scope.totalScore;
+            $scope.profil = $scope.categories[0];
+        }
+        else if ($scope.totalScore > 3) {
+            $scope.result = $scope.totalScore;
+            $scope.profil =  $scope.categories[1];
+        }
+        else {
+            $scope.result = $scope.totalScore;
+            $scope.profil =  $scope.categories[2];
+        }
+        $scope.totalScore = 0;
+    };
+    
+    $scope.reinit = function() {
+        $scope.display = false;
+        $scope.yolo = true;
+    };
+    
+    
 
 	$scope.categories = [
 		{
@@ -20,116 +53,72 @@ app.controller('QuizzCtrl', function ($scope) {
 		}
 	];
 
-	$scope.questions = [
+	$scope.asks = [
 		{
-			numero : 1,
-			question : "Aimez-vous Ruby ?",
-			reponses : [
+			id : 1,
+			label : "Aimez-vous Ruby ?",
+			answers : [
 				{
-					reponse1 : "J'adore",
+					label : "J'adore",
 					categorie : "Nerd",
-					points : 10
+					score : 10
 				},
 				{
-					reponse2 : "Oui",
+					label : "Oui",
 					categorie : "Dev",
-					points : 10
+					score : 5
 				},
 				{
-					reponse3 : "Je préfère les diamants :)",
+					label : "Je préfère les diamants :)",
 					categorie : "Humain",
-					points : 10
+					score : 1
 				}
 			]
 		},
 		{
-			numero : 2,
-			question : "Aimez-vous Javascript ?",
-			reponses : [
+			id : 2,
+			label : "Aimez-vous Javascript ?",
+			answers : [
 				{
-					reponse1 : "C'est génial",
+					label : "C'est génial",
 					categorie : "Nerd",
-					points : 10
+					score : 10
 				},
 				{
-					reponse2 : "Je ne comprends pas l'AJAX",
+					label : "Je ne comprends pas l'AJAX",
 					categorie : "Dev",
-					points : 10
+					score : 5
 				},
 				{
-					reponse3 : "Je connais Jabba le hunt",
+					label : "Je connais Jabba le hunt",
 					categorie : "Humain",
-					points : 10
+					score : 1
 				}
 			]
 		},
 		{
-			numero : 3,
-			question : "Pourquoi choisir AngularJS ?",
-			reponses : [
+			id : 3,
+			label : "Pourquoi choisir AngularJS ?",
+			answers : [
 				{
-					reponse1 : "Pour le SPA",
+					label : "Pour le SPA",
 					categorie : "Nerd",
-					points : 10
+					score : 10
 				},
 				{
-					reponse2 : "C'était demandé dans ma formation...",
+					label : "C'était demandé dans ma formation...",
 					categorie : "Dev",
-					points : 10
+					score : 5
 				},
 				{
-					reponse3 : "Pardon ??",
+					label : "Pardon ??",
 					categorie : "Humain",
-					points : 10
-				}
-			]
-		},
-		{
-			numero : 4,
-			question : "A quoi vous sert votre ordinateur ?",
-			reponses : [
-				{
-					reponse1 : "Coder, développer et jouer",
-					categorie : "Nerd",
-					points : 10
-				},
-				{
-					reponse2 : "Jouer et faire des fansites pour mes jeux !",
-					categorie : "Dev",
-					points : 10
-				},
-				{
-					reponse3 : "Aller sur Facebook, twitter, instagram !",
-					categorie : "Humain",
-					points : 10
-				}
-			]
-		},
-		{
-			numero : 5,
-			question : "Kebab, Mcdo ou Subway ?",
-			reponses : [
-				{
-					reponse1 : "Kebab !",
-					categorie : "Nerd",
-					points : 10
-				},
-				{
-					reponse2 : "Kebab et Subway <3",
-					categorie : "Dev",
-					points : 10
-				},
-				{
-					reponse3 : "Mcdo évidemment !",
-					categorie : "Humain",
-					points : 10
+					score : 1
 				}
 			]
 		}
 	];
 
-	$scope.calculer = function () {
-	};
 
 
 
